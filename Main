@@ -1,0 +1,151 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp( 
+      debugShowCheckedModeBanner: false,
+      title: 'Raouting Navigation',
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => HalamanPertama(),
+          HalamanKedua.routeName : (context) => HalamanKedua(),
+          HalamanKetiga.routeName : (context) => HalamanKetiga(),
+          HalamanKeEmpat.routeName : (context) => HalamanKeEmpat(),
+      },
+  ));
+    
+}
+class HalamanPertama extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+      return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purple[500],
+        title: Text ("Menu Utama"),
+      ),
+      body: Center(
+        child: ListView(
+            children: <Widget>[
+              new Text('UTS Pemrograman Mobile 2\n', style: TextStyle(fontSize: 32,
+           fontWeight: FontWeight.bold,
+           color: Colors.red[900])),
+              RaisedButton(
+                child: Text ('Data Diri / Biodata'),
+                onPressed: () {
+                  Navigator.pushNamed(context, HalamanKedua.routeName);
+                },
+              ),
+             RaisedButton(
+                child: Text ('Kampus'),
+                onPressed: () {
+                  Navigator.pushNamed(context, HalamanKetiga.routeName);
+                },
+              ), 
+              RaisedButton(
+                child: Text ('Materi Gridview'),
+                onPressed: () {
+                  Navigator.pushNamed(context, HalamanKeEmpat.routeName);
+                },
+              ), 
+            ],
+        ),
+        ),
+      );
+  }
+}
+class HalamanKedua extends StatelessWidget {
+ static const String routeName = '/halamanKedua';
+  @override
+  Widget build(BuildContext context){
+      return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purple[500],
+         title: Text ("Data Diri / Biodata "),
+      ),
+      body: Center(
+        child: ListView(
+            children: <Widget>[
+               new Text('DATA MAHASISWA', style: TextStyle(fontSize: 32)),
+          const Divider(
+            height: 2.0,
+          ),
+          new ListTile(
+            title: const Text('Renhat Simanjuntak'),
+            subtitle: const Text('Nama Mahasiswa'),
+          ),
+          new ListTile(
+            title: const Text('6 SIA 11'),
+            subtitle: const Text('Kelas'),
+          ),
+          new ListTile(
+            title: const Text('2018020749'),
+            subtitle: const Text('Nirm'),
+          ),
+          new ListTile(
+            title: const Text('Sistem Informasi'),
+            subtitle: const Text('Jurusan'),
+          ),
+              RaisedButton(
+                child: Text ('Kembali'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+             ],
+           ),
+        ),
+      );
+  }
+}
+class HalamanKetiga extends StatelessWidget {
+ static const String routeName = '/halamanKetiga';
+  @override
+  Widget build(BuildContext context){
+      return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purple[500],
+        title: Text ("kampus"),
+      ),
+      body: Center(
+        child: ListView(
+            children: <Widget>[
+             new ListTile(
+            leading: const Icon(Icons.account_balance_outlined),
+            title: const Text('STMIK TRIGUNA DHARMA MEDAN'),
+            subtitle: const Text('Jalan, Besar Delitua Gg.saudara.'),
+          ),
+             RaisedButton(
+                child: Text ('Kembali'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ), 
+             ],
+          ),
+        ),
+      );
+  }
+}
+class HalamanKeEmpat extends StatelessWidget {
+ static const String routeName = '/halamanKeEmpat';
+  @override
+  Widget build(BuildContext context){
+      return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purple[500],
+        title: Text ("Materi GridView"),
+      ),
+      body: Center(
+        child: ListView(
+            children: <Widget>[
+              Text('Grid View Flutter', style: new TextStyle(
+                  fontSize: 35.0,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.pink[900])),
+              
+             ],
+          ),
+        ),
+      );
+  }
+}
